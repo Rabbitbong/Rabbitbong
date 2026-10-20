@@ -3,5 +3,5 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=16&duration=3200&pause=1400&color=E5484D&center=true&vCenter=true&width=720&height=30&lines=rabbitbong;offensive+security+%2F+content+engineer;pentesting+%C2%B7+adversary+sim+%C2%B7+tooling;honey+is+only+sticky+when+it's+not+in+your+mouth." alt="rabbitbong · offensive security / content engineer">
+  <img src="./ascii-banner.svg" alt="Rabbitbong · offensive security / content engineer" width="720">
 </p>
