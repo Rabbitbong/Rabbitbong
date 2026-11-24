@@ -1,61 +1,42 @@
 <p align="center">
-  <img src="./assets/glitch.svg" alt="RABBITBONG. UB// undefined behaviors. offensive security / content engineer." width="100%">
+  <sub>THREE WORKS FOR A README &nbsp;·&nbsp; FABLE &nbsp;·&nbsp; 2026</sub>
 </p>
 
 <p align="center">
-  <code>warning: the behavior of this profile is undefined.</code>
+  <img src="./assets/i-mono-no-aware.svg" alt="A dark cherry branch in full bloom reaches across a huge red setting sun over still water. Petals fall and leave rings on the water. Over about three minutes the sun sets, every blossom falls, a moon and stars come out, and the branch is left bare. Then nothing moves." width="100%">
+</p>
+<p align="center">
+  <sub><b>I.</b> &nbsp;<i>Mono no aware</i> &nbsp;物の哀れ</sub>
   <br>
-  <sub>offensive security · content engineer · UK · <a href="https://www.undefinedbehaviors.com/">UB// undefinedbehaviors.com</a></sub>
-</p>
-
-<p align="center">
-  <a href="https://www.undefinedbehaviors.com/"><img src="./assets/bugcheck.svg" alt="Red screen of death. Your profile ran into a problem it caused on purpose. Stop code: MEA_CULPA. What failed: undefinedbehaviors.sys. The QR code goes to undefinedbehaviors.com." width="100%"></a>
-</p>
-
-<pre>
-kd&gt; !analyze -v
-*******************************************************************************
-*                            Bugcheck Analysis                                *
-*******************************************************************************
-
-MEA_CULPA (c0000005)
-The process did exactly what it was told to do. That was the problem.
-Arguments:
-Arg1: 0000000000000001, offensive security
-Arg2: 0000000000000002, content engineer
-Arg3: 0000000000000044, UK
-Arg4: ffffb001c0de0000, <a href="https://www.undefinedbehaviors.com/">undefinedbehaviors.com</a>
-
-PROCESS_NAME:       Rabbitbong.exe
-IMAGE_NAME:         undefinedbehaviors.sys
-FAILURE_BUCKET_ID:  0xUB_WORKED_IN_THE_LAB
-
-kd&gt; k
- # Call Site                                What it does
-00 <a href="https://github.com/Rabbitbong/node2shell">node2shell</a>!BrotliDecoder::OobWrite+0x10  Node.js Brotli heap OOB write to RCE, CVE-2026-111497
-01 <a href="https://github.com/Rabbitbong/AppBound0">AppBound0</a>!Elevator::DecryptAppBoundKey   Chrome / Edge App-Bound Encryption bypass
-02 <a href="https://github.com/Rabbitbong/tokenrun">tokenrun</a>!CreateProcessAsUserW            run a program under a token copied from another process
-03 <a href="https://github.com/Rabbitbong/MemoryGlass">MemoryGlass</a>!UnhookNtdll                  memory dumps through an unhooked ntdll
-04 <a href="https://github.com/Rabbitbong/OurSharePoint-CVE-2025-53770">OurSharePoint</a>!TypeConfuseDelegate        SharePoint RCE chain in one binary, CVE-2025-53770
-05 <a href="https://github.com/Rabbitbong/trust-me-bro-jar">trust_me_bro_jar</a>!SwapPublicKey           Elasticsearch licenses signed with your own key
-06 <a href="https://www.undefinedbehaviors.com/">undefinedbehaviors</a>!WriteItUp             the blog, where the above gets explained
-07 ntdll!RtlUserThreadStart
-</pre>
-
-<p align="center">
-  <img src="./rabbitbong.svg" alt="ASCII portrait of a woman under a red umbrella" width="560">
+  <sub>This one does not loop. The sun sets once, every blossom falls once, and after about three minutes nothing moves again.</sub>
   <br>
-  <sub><code>kd&gt; .dump /ma</code> &nbsp;last known image of the process. the umbrella survived.</sub>
+  <sub>Reload to see it bloom. It will end again.</sub>
 </p>
 
-<p align="center">
-  <img src="./assets/hexdump.svg" alt="Debugger hex dump of the bio: UB// undefined behaviors, offensive security / content engineer, i write exploits, then i write about them, mea culpa. The last two rows are not shown in ASCII; decode the hex." width="100%">
-</p>
+<br>
 
 <p align="center">
-  <img src="./assets/rabbit-run.svg" alt="A rabbit hopping over a ticker tape of error messages. The process is still running." width="100%">
+  <img src="./assets/ii-two-readings.svg" alt="Two sets of black and white concentric rings drift across each other on a cream ground, producing shifting interference patterns. A red disc floats through them." width="100%">
+</p>
+<p align="center">
+  <sub><b>II.</b> &nbsp;<i>Two readings of the same sentence</i></sub>
+  <br>
+  <sub>Two sets of plain rings. The pattern is in neither. It only exists where they overlap.</sub>
 </p>
 
+<br>
+
 <p align="center">
-  <sub>no rabbits were harmed. the process was.</sub>
+  <img src="./assets/iii-the-patron.svg" alt="A cubist cut-paper portrait of a rabbit in a suit holding a red umbrella. Half the face is in profile and half is head-on. It rains on one side, the sun shines on the other, and a moon hangs in the corner. Signed fable." width="100%">
+</p>
+<p align="center">
+  <sub><b>III.</b> &nbsp;<i>The patron, from every side at once</i></sub>
+  <br>
+  <sub>Commissioned with the words &ldquo;go crazy&rdquo;. Sitter shown in rain, sun and moonlight, to be safe.</sub>
+</p>
+
+<br>
+
+<p align="center">
+  <sub>SVG and CSS keyframes. No JavaScript, no bitmaps, nothing loaded from anywhere. Every mark is described in text.</sub>
 </p>
