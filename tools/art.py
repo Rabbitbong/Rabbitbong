@@ -18,6 +18,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "assets")
 FORCE_MOTION = False
 
+# The pieces used to hold still for viewers whose system asks for reduced
+# motion.  That is switched off: they now animate for everyone.  Set this to
+# True and rebuild to bring the still fallback back.
+RESPECT_REDUCED_MOTION = False
+
 INK = "#0c0e12"
 BONE = "#e9e1d6"
 PAPER = "#efe6d2"
@@ -28,7 +33,7 @@ PAINT_RED = "#d7332c"
 
 def reduced(rules=""):
     """Still frame for viewers who asked their OS for less motion."""
-    if FORCE_MOTION:
+    if FORCE_MOTION or not RESPECT_REDUCED_MOTION:
         return ""
     return f"@media (prefers-reduced-motion:reduce){{*{{animation:none!important}}{rules}}}"
 
@@ -377,7 +382,10 @@ def moire():
 
 
 # --------------------------------------------------------------------------
-# III.  The patron, from every side at once
+# (off the wall)  The patron, from every side at once
+#
+# Replaced as piece III by "Attention".  Still buildable by name:
+#     python3 tools/art.py patron
 #
 # A rabbit under a red umbrella, in profile and head-on at the same time,
 # standing in rain, sun and moonlight at once.  Every shape is a polygon whose
@@ -690,8 +698,125 @@ def patron():
     write("iii-the-patron.svg", svg(W, H, "The patron, from every side at once", css, body))
 
 
-WALL = {"mono": mono, "moire": moire, "patron": patron}
-ARCHIVE = {"almost": almost}
+# --------------------------------------------------------------------------
+# III.  Attention
+#
+# An eye whose pupil holds a whole world with another eye in it, whose pupil
+# holds another, nine deep.  Each world is drawn once and nested with <use>.
+# Because every level sits inside the one above by the same turn-and-shrink,
+# the whole stack has one fixed point, and zooming into that point by exactly
+# three levels lands on a picture identical to the start.  So the dive never
+# has to stop.
+# --------------------------------------------------------------------------
+
+def attention():
+    W = H = 1200
+    INKC = "#17130f"
+    SHRINK = 58 / 300          # a world is 300 units across; the pupil lets 58 through
+    EX, EY, TURN = 26, 4, 90   # where the pupil sits in its world, and how the next is turned
+    LEVELS, CYCLE, LOOP, BASE = 9, 3, 13.5, 3.3
+    # the one point that every level maps onto itself
+    FX = (EX - SHRINK * EY) / (1 + SHRINK ** 2)
+    FY = (EY + SHRINK * EX) / (1 + SHRINK ** 2)
+
+    looks = [  # rays a/b, teeth, lid, iris, spokes
+        ("#d7332c", "#efe6d2", "#1c2a4f", "#f0b632", "#3f8f6b", "#fbf7ee"),
+        ("#1c2a4f", "#f0a3a0", "#f0b632", "#d7332c", "#a8c3d8", "#1c2a4f"),
+        ("#f0b632", "#17130f", "#d7332c", "#2d5da8", "#ee6a2e", "#17130f"),
+    ]
+
+    def pt(r, a):
+        return f"{r * math.cos(a):.1f} {r * math.sin(a):.1f}"
+
+    def wedges(n, r):
+        return "".join(
+            f"M0 0L{pt(r, math.tau * i / n)}A{r} {r} 0 0 1 {pt(r, math.tau * (i + 1) / n)}Z" for i in range(0, n, 2)
+        )
+
+    def teeth(n, r0, r1):
+        return "".join(
+            f"M{pt(r0, math.tau * i / n)}L{pt(r1, math.tau * (i + 0.5) / n)}L{pt(r0, math.tau * (i + 1) / n)}Z"
+            for i in range(n)
+        )
+
+    def spokes(n, r0, r1):
+        return "".join(f"M{pt(r0, math.tau * i / n)}L{pt(r1, math.tau * i / n)}" for i in range(n))
+
+    def lashes(ts, ctrl_y, length, half):
+        """Spikes standing on the curve from (-244,0) through a control point to (244,0)."""
+        out = []
+        for t in ts:
+            x = (1 - t) ** 2 * -244 + t * t * 244
+            y = 2 * (1 - t) * t * ctrl_y
+            tx, ty = 2 * (1 - t) * 244 + 2 * t * 244, 2 * (1 - 2 * t) * ctrl_y
+            ln = math.hypot(tx, ty)
+            tx, ty = tx / ln, ty / ln
+            nx, ny = (ty, -tx) if ctrl_y < 0 else (-ty, tx)
+            lean = (t - 0.5) * 0.9  # fan outwards
+            out.append(
+                f"M{x - tx * half:.1f} {y - ty * half:.1f}"
+                f"L{x + (nx + tx * lean) * length:.1f} {y + (ny + ty * lean) * length:.1f}"
+                f"L{x + tx * half:.1f} {y + ty * half:.1f}Z"
+            )
+        return "".join(out)
+
+    OUTER_UP, OUTER_LO = "M-244 0Q0-236 244 0", "M-244 0Q0 236 244 0"
+    veins = ("M-190 2l34-11l22 7l20-9M-186-5l30-23l19 3M-184 9l26 20l22-4"
+             "M190 2l-30 13l-21-6M186-6l-24-20l-16 4M184 10l-28 17")
+    defs = []
+    for v, (ra, rb, tc, lid, iris, spk) in enumerate(looks):
+        defs.append(
+            f'<g id="bk{v}"><circle r="300" fill="{ra}"/>'
+            f'<path class="ry{v}" d="{wedges(28, 300)}" fill="{rb}"/>'
+            f'<path class="tt{v}" d="{teeth(22, 301, 262)}" fill="{tc}"/>'
+            f'<path class="k" d="{OUTER_UP}Q0 236-244 0Z" fill="{lid}"/>'
+            f'<path class="k" d="M-200 0Q0-152 200 0Q0 152-200 0Z" fill="#fbf7ee"/>'
+            f'<path d="{veins}" fill="none" stroke="#d7332c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
+            f'<g transform="translate({EX} {EY})"><circle class="k" r="104" fill="{iris}"/>'
+            f'<path class="sp{v}" d="{spokes(20, 72, 98)}" fill="none" stroke="{spk}" stroke-width="6" stroke-linecap="round"/>'
+            f'<circle r="70" fill="none" stroke="{INKC}" stroke-width="4"/><circle r="62" fill="{INKC}"/></g></g>'
+            f'<g id="fr{v}"><g class="up{v}"><path class="k" d="{OUTER_UP}L200 0Q0-152-200 0Z" fill="{lid}"/>'
+            f'<path d="{lashes((0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8), -236, 46, 11)}" fill="{INKC}"/></g>'
+            f'<g class="lo{v}"><path class="k" d="{OUTER_LO}L200 0Q0 152-200 0Z" fill="{lid}"/>'
+            f'<path d="{lashes((0.28, 0.39, 0.5, 0.61, 0.72), 236, 26, 8)}" fill="{INKC}"/></g>'
+            f'<circle cx="{EX - 64}" cy="{EY - 50}" r="13" fill="#fff"/><circle cx="{EX - 40}" cy="{EY - 72}" r="6" fill="#fff"/></g>'
+        )
+    for n in range(LEVELS - 1, -1, -1):
+        v = n % CYCLE
+        inner = "" if n == LEVELS - 1 else (
+            f'<g transform="translate({EX} {EY}) rotate({TURN}) scale({SHRINK:.5f})"><use href="#W{n + 1}"/></g>'
+        )
+        defs.append(f'<g id="W{n}"><use href="#bk{v}"/>{inner}<use href="#fr{v}"/></g>')
+
+    # exponential zoom, so the fall has constant speed and the loop has no seam
+    K = 36
+    zoom = "".join(
+        f"{100 * j / K:.3f}%{{transform:rotate({-TURN * CYCLE * j / K:.2f}deg) scale({(1 / SHRINK) ** (CYCLE * j / K):.4f})}}"
+        for j in range(K + 1)
+    )
+    css = f"""
+.k{{stroke:{INKC};stroke-width:8;stroke-linejoin:round}}
+.zoom{{animation:zoom {LOOP}s linear infinite}}
+.ry0,.ry2{{animation:spin 38s linear infinite}}.ry1{{animation:spin 38s linear infinite reverse}}
+.tt0,.tt2{{animation:spin 52s linear infinite reverse}}.tt1{{animation:spin 52s linear infinite}}
+.sp0,.sp2{{animation:spin 8s linear infinite reverse}}.sp1{{animation:spin 8s linear infinite}}
+.up0{{animation:up 2.3s ease-in-out infinite alternate}}.up1{{animation:up 3.1s ease-in-out infinite alternate}}.up2{{animation:up 1.7s ease-in-out infinite alternate}}
+.lo0{{animation:lo 2.3s ease-in-out infinite alternate}}.lo1{{animation:lo 3.1s ease-in-out infinite alternate}}.lo2{{animation:lo 1.7s ease-in-out infinite alternate}}
+@keyframes zoom{{{zoom}}}
+@keyframes spin{{to{{transform:rotate(360deg)}}}}
+@keyframes up{{to{{transform:translateY(11px)}}}}
+@keyframes lo{{to{{transform:translateY(-8px)}}}}
+{reduced()}
+"""
+    body = f"""<defs><clipPath id="f"><rect width="{W}" height="{H}" rx="4"/></clipPath>{"".join(defs)}</defs>
+<g clip-path="url(#f)"><rect width="{W}" height="{H}" fill="{INKC}"/>
+<g transform="translate({W / 2} {H / 2})"><g class="zoom"><g transform="scale({BASE}) translate({-FX:.3f} {-FY:.3f})"><use href="#W0"/></g></g></g>
+</g>"""
+    write("iii-attention.svg", svg(W, H, "Attention", css, body))
+
+
+WALL = {"mono": mono, "moire": moire, "attention": attention}
+ARCHIVE = {"almost": almost, "patron": patron}
 
 if __name__ == "__main__":
     args = sys.argv[1:]

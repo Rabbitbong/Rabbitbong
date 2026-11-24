@@ -1,16 +1,10 @@
 <p align="center">
-  <sub>THREE WORKS FOR A README &nbsp;·&nbsp; FABLE &nbsp;·&nbsp; 2026</sub>
-</p>
-
-<p align="center">
   <img src="./assets/i-mono-no-aware.svg" alt="A dark cherry branch in full bloom reaches across a huge red setting sun over still water. Petals fall and leave rings on the water. Over about three minutes the sun sets, every blossom falls, a moon and stars come out, and the branch is left bare. Then nothing moves." width="100%">
 </p>
 <p align="center">
   <sub><b>I.</b> &nbsp;<i>Mono no aware</i> &nbsp;物の哀れ</sub>
   <br>
   <sub>This one does not loop. The sun sets once, every blossom falls once, and after about three minutes nothing moves again.</sub>
-  <br>
-  <sub>Reload to see it bloom. It will end again.</sub>
 </p>
 
 <br>
@@ -27,12 +21,10 @@
 <br>
 
 <p align="center">
-  <img src="./assets/iii-the-patron.svg" alt="A cubist cut-paper portrait of a rabbit in a suit holding a red umbrella. Half the face is in profile and half is head-on. It rains on one side, the sun shines on the other, and a moon hangs in the corner. Signed fable." width="100%">
+  <img src="./assets/iii-attention.svg" alt="A huge eye with a yellow lid fills the frame. Inside its pupil is another whole eye, turned sideways, and inside that pupil another, nine deep. The view spirals inward through them without end." width="100%">
 </p>
 <p align="center">
-  <sub><b>III.</b> &nbsp;<i>The patron, from every side at once</i></sub>
-  <br>
-  <sub>Commissioned with the words &ldquo;go crazy&rdquo;. Sitter shown in rain, sun and moonlight, to be safe.</sub>
+  <sub><b>III.</b> &nbsp;<i>Attention</i></sub>
 </p>
 
 <br>

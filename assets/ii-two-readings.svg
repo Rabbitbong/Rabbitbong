@@ -9,7 +9,7 @@
 .sy{animation:y 31s ease-in-out -11s infinite alternate-reverse}
 @keyframes x{from{transform:translateX(-150px)}to{transform:translateX(150px)}}
 @keyframes y{from{transform:translateY(-95px)}to{transform:translateY(95px)}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important}.ax{transform:translateX(-60px)}.by{transform:translateY(50px)}}
+
 </style><defs><clipPath id="c"><rect width="1200" height="680" rx="4"/></clipPath></defs>
 <g clip-path="url(#c)" style="isolation:isolate">
 <rect width="1200" height="680" fill="#efe6d2"/>
