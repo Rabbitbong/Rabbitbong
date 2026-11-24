@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 118" width="1200" height="118" role="img" aria-label="A rabbit hopping over a ticker tape of error messages. The process is still running." xml:space="preserve"><title>A rabbit hopping over a ticker tape of error messages. The process is still running.</title><style>
+text{font:bold 17px ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;white-space:pre}
+.tp{fill:#6e7681}
+.sl,.rb{fill:#f2444c}
+.tape{animation:tape 94.2s linear infinite}
+.hx{animation:hx 15s linear infinite}
+.hy{animation:hy .34s ease-out infinite alternate}
+.ey{animation:bk 3.1s step-end infinite}
+@keyframes tape{to{transform:translateX(-2448px)}}
+@keyframes hx{from{transform:translateX(-90px)}to{transform:translateX(1260px)}}
+@keyframes hy{to{transform:translateY(-16px)}}
+@keyframes bk{0%,100%{opacity:1}92%{opacity:0}95%{opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.hx{transform:translateX(560px)}}
+</style><path d="M0 72h1200" stroke="#6e7681" stroke-width="1.5" stroke-dasharray="2 9" opacity=".7"/>
+<g class="hx"><g class="hy">
+<text x="0" y="42" class="rb">(\_/)</text>
+<text x="0" y="62" class="rb">(   )</text>
+<text x="0" y="62" class="rb ey"> o.o</text>
+</g></g>
+<g class="tape"><text x="0" y="100" textLength="2448" class="tp">segmentation fault (core dumped)  <tspan class="sl">//</tspan>  free(): invalid pointer  <tspan class="sl">//</tspan>  it works on my machine  <tspan class="sl">//</tspan>  STATUS_ACCESS_VIOLATION  <tspan class="sl">//</tspan>  here be nasal demons  <tspan class="sl">//</tspan>  double free or corruption (!prev)  <tspan class="sl">//</tspan>  signed overflow is a lifestyle  <tspan class="sl">//</tspan>  mea culpa  <tspan class="sl">//</tspan>  </text><text x="2448" y="100" textLength="2448" class="tp">segmentation fault (core dumped)  <tspan class="sl">//</tspan>  free(): invalid pointer  <tspan class="sl">//</tspan>  it works on my machine  <tspan class="sl">//</tspan>  STATUS_ACCESS_VIOLATION  <tspan class="sl">//</tspan>  here be nasal demons  <tspan class="sl">//</tspan>  double free or corruption (!prev)  <tspan class="sl">//</tspan>  signed overflow is a lifestyle  <tspan class="sl">//</tspan>  mea culpa  <tspan class="sl">//</tspan>  </text></g></svg>
