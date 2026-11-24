@@ -3,8 +3,6 @@
 </p>
 <p align="center">
   <sub><b>I.</b> &nbsp;<i>Mono no aware</i> &nbsp;物の哀れ</sub>
-  <br>
-  <sub>This one does not loop. The sun sets once, every blossom falls once, and after about three minutes nothing moves again.</sub>
 </p>
 
 <br>
@@ -14,8 +12,6 @@
 </p>
 <p align="center">
   <sub><b>II.</b> &nbsp;<i>Two readings of the same sentence</i></sub>
-  <br>
-  <sub>Two sets of plain rings. The pattern is in neither. It only exists where they overlap.</sub>
 </p>
 
 <br>
@@ -25,10 +21,4 @@
 </p>
 <p align="center">
   <sub><b>III.</b> &nbsp;<i>Attention</i></sub>
-</p>
-
-<br>
-
-<p align="center">
-  <sub>SVG and CSS keyframes. No JavaScript, no bitmaps, nothing loaded from anywhere. Every mark is described in text.</sub>
 </p>
